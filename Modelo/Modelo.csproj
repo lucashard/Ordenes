@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Patrones\**" />
+    <EmbeddedResource Remove="Patrones\**" />
+    <None Remove="Patrones\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Servicio\EmpleadoServicio.cs" />
+    <Compile Remove="Servicio\ProcesoProductivoServicio.cs" />
+    <Compile Remove="Servicio\SueldoServicio.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Servicio\" />
+  </ItemGroup>
+
+</Project>
