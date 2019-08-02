@@ -128,7 +128,7 @@ namespace Test
             Assert.True(empleados.Keys.First().First().Dni.Equals(empleado.Dni));
             Assert.Equal(empleados.Keys.First().First().Puesto.Nombre, empleado.Puesto.Nombre);
 
-            Assert.True(empleados.Values.First().First().FechaHasta.Date.Equals(DateTime.Now.AddDays(2).Date));
+            Assert.True(empleados.Values.First().First().FechaHasta.Date.Equals(DateTime.Now.AddDays(2).Date)); 
         }
 
 
