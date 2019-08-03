@@ -16,8 +16,6 @@
     <Compile Remove="Servicio\SueldoServicio.cs" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Servicio\" />
-  </ItemGroup>
+  
 
 </Project>
