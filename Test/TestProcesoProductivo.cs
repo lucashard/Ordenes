@@ -131,6 +131,23 @@ namespace Test
             Assert.True(empleados.Values.First().First().FechaHasta.Date.Equals(DateTime.Now.AddDays(2).Date)); 
         }
 
+        [Fact]
+        public void VerEstadoOrden()
+        {
+            string estado = orden.GetEstadoOrden();
+
+            Assert.Equal("EnEjecucion", estado);
+
+            List<EmpleadosEtapas> empleadosEtapas = new List<EmpleadosEtapas>() { new EmpleadosEtapas(new Empleado() { Nombre = "lucas", Dni = 32638916, Id = 1, Puesto = new Puestos() { Nombre = "Carpintero" } }, new Etapas(20, "Cerrucho")) };
+
+
+            orden = new Orden(new List<Orden>() {new Orden( empleadosEtapas,
+                                                                        new List<MateriasPrima>() { new MateriasPrima() { Nombre = "Pintura", Id = 1, Cantidad = 30, Costo = 1000 } },DateTime.Now,"Fiat") });
+            orden.Estado = false;
+
+            Assert.Equal("Cancelada",orden.GetEstadoOrden());
+        }
+
 
     }
 }

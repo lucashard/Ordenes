@@ -13,6 +13,13 @@ namespace Modelo
         public List<EmpleadosEtapas> EmpleadosEtapas { get; set; }
         public bool Estado { get; set; } = true; //abierta=true
         public string NombreOT { get; set; } = string.Empty;
+        private enum EstadoOrden
+        {
+            Creada,
+            EnEjecucion,
+            Cancelada,
+            Terminada
+        }
 
         public int CantidadOrdenes=999;       
 
@@ -168,5 +175,36 @@ namespace Modelo
             return dicconario;
         }
 
+        public string GetEstadoOrden()
+        {
+            var fechaInicio = new DateTime();
+            var fechaHasta = new DateTime();
+
+            foreach (var orden in ListOrdenes)
+            {
+                fechaInicio = orden.FechaInicio;
+                foreach(var etapas in orden.EmpleadosEtapas)
+                {
+                    var duracion = etapas.Etapas.Duracion;
+                    fechaHasta = fechaInicio.AddDays((int)Math.Truncate(Math.Floor(duracion/8)));
+                }
+            }
+            if(!Estado)
+            {
+                return EstadoOrden.Cancelada.ToString();
+            }
+            if (fechaInicio.Date>DateTime.Now.Date)
+            {
+                return EstadoOrden.Creada.ToString();
+            }
+            if(fechaInicio.Date>=DateTime.Now.Date && fechaHasta.Date>=DateTime.Now.Date)
+            {
+                return EstadoOrden.EnEjecucion.ToString();
+            }
+            else
+            {
+                return EstadoOrden.Terminada.ToString();
+            }
+        }
     }
 }
