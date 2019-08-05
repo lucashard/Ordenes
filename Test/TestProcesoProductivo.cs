@@ -32,7 +32,7 @@ namespace Test
 
             bool opcion = ProcesoProductivo.SePuedeAgregarOrden();
 
-            Assert.True(opcion == true);
+            Assert.True(opcion == true);            
 
         }
 
@@ -62,6 +62,7 @@ namespace Test
                 {
                     var ex = Assert.Throws<ExcepcionesDeDominio>(
                     () => new Nombre(item.Empleado.Nombre)).Message.ToString();
+
                 }
             }
 
@@ -146,6 +147,15 @@ namespace Test
             orden.Estado = false;
 
             Assert.Equal("Cancelada",orden.GetEstadoOrden());
+        }
+
+        [Fact]
+        public void CalcularDuracionConEtapasEnParalelo()
+        {
+            var fechaFin = new DateTime();
+            fechaFin = DateTime.Now.AddDays(10);
+
+            Assert.Equal(orden.CalcularDuracionConEtapasEnParalelo().Date,fechaFin.Date);
         }
 
 

@@ -206,5 +206,20 @@ namespace Modelo
                 return EstadoOrden.Terminada.ToString();
             }
         }
+
+        public DateTime CalcularDuracionConEtapasEnParalelo()
+        {
+            var fechaInicio = new DateTime();
+            var fechaHasta = new DateTime();
+            foreach (var item in ListOrdenes)
+            {
+                fechaInicio = item.FechaInicio;
+                foreach (var etapas in item.EmpleadosEtapas)
+                {
+                    fechaHasta = item.FechaInicio.AddDays((int)Math.Truncate(Math.Floor(etapas.Etapas.Duracion / 8)));
+                }
+            }
+            
+        }
     }
 }
