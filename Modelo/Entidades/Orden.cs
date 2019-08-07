@@ -211,15 +211,39 @@ namespace Modelo
         {
             var fechaInicio = new DateTime();
             var fechaHasta = new DateTime();
+            int cantDias = 0;
             foreach (var item in ListOrdenes)
             {
                 fechaInicio = item.FechaInicio;
                 foreach (var etapas in item.EmpleadosEtapas)
                 {
-                    fechaHasta = item.FechaInicio.AddDays((int)Math.Truncate(Math.Floor(etapas.Etapas.Duracion / 8)));
+                    if (!etapas.Etapas.EnParalelo)
+                    {
+                        fechaHasta = AgregarDiasLaborales(fechaInicio, (int)Math.Truncate(Math.Floor(etapas.Etapas.Duracion / 8)-1));
+                    }
+                    else
+                    {
+                        if ((int)Math.Truncate(Math.Floor(etapas.Etapas.Duracion / 8)) > cantDias)
+                        { cantDias = (int)Math.Truncate(Math.Floor(etapas.Etapas.Duracion / 8)); }
+                    }
                 }
+                fechaHasta = AgregarDiasLaborales(fechaHasta, cantDias);
             }
+            return fechaHasta;
             
+        }
+
+        private DateTime AgregarDiasLaborales(DateTime fecha,int CantDias)
+        {
+            DateTime tmpDate = fecha;
+            while (CantDias > 0)
+            {
+                tmpDate = tmpDate.AddDays(1);
+                if (tmpDate.DayOfWeek < DayOfWeek.Saturday &&
+                    tmpDate.DayOfWeek > DayOfWeek.Sunday )
+                    CantDias--;
+            }
+            return tmpDate;
         }
     }
 }

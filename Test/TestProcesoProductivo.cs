@@ -14,7 +14,7 @@ namespace Test
      
         public TestProcesoProductivo()
         {
-            List<EmpleadosEtapas> empleadosEtapas = new List<EmpleadosEtapas>() { new EmpleadosEtapas(new Empleado() { Nombre = "lucas", Dni = 32638916, Id = 1, Puesto = new Puestos() { Nombre = "Carpintero" } }, new Etapas(20, "Cerrucho")) };
+            List<EmpleadosEtapas> empleadosEtapas = new List<EmpleadosEtapas>() { new EmpleadosEtapas(new Empleado() { Nombre = "lucas", Dni = 32638916, Id = 1, Puesto = new Puestos() { Nombre = "Carpintero" } }, new Etapas(20, "Cerrucho", true)) };
 
 
             orden = new Orden(new List<Orden>() {new Orden( empleadosEtapas,
@@ -24,7 +24,7 @@ namespace Test
         [Fact]
         public void SePuedeAgregarOrden()
         {
-            List<EmpleadosEtapas> empleadosEtapas = new List<EmpleadosEtapas>() { new EmpleadosEtapas(new Empleado() { Nombre = "lucas", Dni = 32638916, Id = 1 }, new Etapas(20, "Cerrucho")) };
+            List<EmpleadosEtapas> empleadosEtapas = new List<EmpleadosEtapas>() { new EmpleadosEtapas(new Empleado() { Nombre = "lucas", Dni = 32638916, Id = 1 }, new Etapas(20, "Cerrucho", true)) };
 
             Orden ProcesoProductivo = new Orden(new List<Orden>() { new Orden(empleadosEtapas,
                                                                         new List<MateriasPrima>() { new MateriasPrima() { Nombre = "Pintura", Id = 1, Cantidad = 30, Costo = 1000 } },DateTime.Now,"Fiat") });
@@ -39,7 +39,7 @@ namespace Test
         [Fact]
         public void AgregarOrden()
         {
-            List<EmpleadosEtapas> empleadosEtapas = new List<EmpleadosEtapas>() { new EmpleadosEtapas(new Empleado() { Nombre = "lucas", Dni = 32638916, Id = 1 }, new Etapas(20, "Cerrucho")) };
+            List<EmpleadosEtapas> empleadosEtapas = new List<EmpleadosEtapas>() { new EmpleadosEtapas(new Empleado() { Nombre = "lucas", Dni = 32638916, Id = 1 }, new Etapas(20, "Cerrucho", true)) };
 
             var list = orden.AgregarOrden(new Orden(empleadosEtapas,
                                                             new List<MateriasPrima>() { new MateriasPrima() { Nombre = "Pintura", Id = 1, Cantidad = 30, Costo = 1000 } }, DateTime.Now,"Fiat"));
@@ -51,7 +51,7 @@ namespace Test
         public void ErrorAlAgregarOrdenErronea()
         {
 
-            List<EmpleadosEtapas> empleadosEtapas = new List<EmpleadosEtapas>() { new EmpleadosEtapas(new Empleado() { Nombre = "", Dni = 32638916, Id = 1 }, new Etapas(20, "Cerrucho")) };
+            List<EmpleadosEtapas> empleadosEtapas = new List<EmpleadosEtapas>() { new EmpleadosEtapas(new Empleado() { Nombre = "", Dni = 32638916, Id = 1 }, new Etapas(20, "Cerrucho", true)) };
 
             Orden proc = new Orden(new List<Orden>() { new Orden(empleadosEtapas,
                                                                         new List<MateriasPrima>() { new MateriasPrima() { Nombre = "Pintura", Id = 1, Cantidad = 30, Costo = 1000 } },DateTime.Now,"Fiat") });
@@ -71,7 +71,7 @@ namespace Test
         [Fact]
         public void CalcularDuracionEnHorasProceso()
         {
-            List<EmpleadosEtapas> empleadosEtapas = new List<EmpleadosEtapas>() { new EmpleadosEtapas(new Empleado() { Nombre = "lucas", Dni = 32638916, Id = 1 }, new Etapas(20, "Cerrucho")) };
+            List<EmpleadosEtapas> empleadosEtapas = new List<EmpleadosEtapas>() { new EmpleadosEtapas(new Empleado() { Nombre = "lucas", Dni = 32638916, Id = 1 }, new Etapas(20, "Cerrucho", true)) };
 
             Orden proc = new Orden(new List<Orden>() { new Orden(empleadosEtapas,
                                                                         new List<MateriasPrima>() { new MateriasPrima() { Nombre = "Pintura", Id = 1, Cantidad = 30, Costo = 1000 } },DateTime.Now,"Fiat") });
@@ -84,7 +84,7 @@ namespace Test
         public void CalcularCostoDelProductoDeMateriales()
         {
 
-            List<EmpleadosEtapas> empleadosEtapas = new List<EmpleadosEtapas>() { new EmpleadosEtapas(new Empleado() { Nombre = "lucas", Dni = 32638916, Id = 1 }, new Etapas(20, "Cerrucho")) };
+            List<EmpleadosEtapas> empleadosEtapas = new List<EmpleadosEtapas>() { new EmpleadosEtapas(new Empleado() { Nombre = "lucas", Dni = 32638916, Id = 1 }, new Etapas(20, "Cerrucho", true)) };
 
             Orden proc = new Orden(new List<Orden>() { new Orden(empleadosEtapas,
                                                                         new List<MateriasPrima>() { new MateriasPrima() { Nombre = "Pintura", Id = 1, Cantidad = 30, Costo = 1000 } },DateTime.Now,"Fiat") });
@@ -132,6 +132,9 @@ namespace Test
             Assert.True(empleados.Values.First().First().FechaHasta.Date.Equals(DateTime.Now.AddDays(2).Date)); 
         }
 
+        /// <summary>
+        /// Ves el estado de la Orden
+        /// </summary>
         [Fact]
         public void VerEstadoOrden()
         {
@@ -139,7 +142,7 @@ namespace Test
 
             Assert.Equal("EnEjecucion", estado);
 
-            List<EmpleadosEtapas> empleadosEtapas = new List<EmpleadosEtapas>() { new EmpleadosEtapas(new Empleado() { Nombre = "lucas", Dni = 32638916, Id = 1, Puesto = new Puestos() { Nombre = "Carpintero" } }, new Etapas(20, "Cerrucho")) };
+            List<EmpleadosEtapas> empleadosEtapas = new List<EmpleadosEtapas>() { new EmpleadosEtapas(new Empleado() { Nombre = "lucas", Dni = 32638916, Id = 1, Puesto = new Puestos() { Nombre = "Carpintero" } }, new Etapas(20, "Cerrucho", true)) };
 
 
             orden = new Orden(new List<Orden>() {new Orden( empleadosEtapas,
@@ -149,11 +152,21 @@ namespace Test
             Assert.Equal("Cancelada",orden.GetEstadoOrden());
         }
 
+        /// <summary>
+        /// Calcula la duracion de la OT con ordenes que no se puedan saltear otras etapas
+        /// </summary>
         [Fact]
         public void CalcularDuracionConEtapasEnParalelo()
         {
-            var fechaFin = new DateTime();
-            fechaFin = DateTime.Now.AddDays(10);
+            var fechaFin = new DateTime(2019,08,16);
+
+            List<EmpleadosEtapas> empleadosEtapas = new List<EmpleadosEtapas>() { new EmpleadosEtapas(new Empleado() { Nombre = "lucas", Dni = 32638916, Id = 1, Puesto = new Puestos() { Nombre = "Carpintero" } }, new Etapas(40, "Cerrucho",true))
+            ,new EmpleadosEtapas(new Empleado() { Nombre = "lucas", Dni = 32638916, Id = 1, Puesto = new Puestos() { Nombre = "Carpintero" } }, new Etapas(40, "Cerrucho",false))
+            ,new EmpleadosEtapas(new Empleado() { Nombre = "lucas", Dni = 32638916, Id = 1, Puesto = new Puestos() { Nombre = "Carpintero" } }, new Etapas(40, "Cerrucho",true))};
+
+
+            orden = new Orden(new List<Orden>() {new Orden( empleadosEtapas,
+                                                                        new List<MateriasPrima>() { new MateriasPrima() { Nombre = "Pintura", Id = 1, Cantidad = 30, Costo = 1000 } },new DateTime(2019,08,05),"Fiat") });
 
             Assert.Equal(orden.CalcularDuracionConEtapasEnParalelo().Date,fechaFin.Date);
         }
