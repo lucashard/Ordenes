@@ -1,9 +1,6 @@
 ﻿using Xunit;
-using System.Collections.Generic;
 using Modelo;
-using Microsoft.AspNetCore.Mvc;
 using System.Linq;
-using Moq;
 
 namespace Test
 {
