@@ -1,4 +1,4 @@
-﻿namespace Modelo.Entidades
+﻿namespace Modelo
 {
     public class Direccion
     {
