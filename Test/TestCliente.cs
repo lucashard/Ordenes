@@ -16,7 +16,7 @@ namespace Test
 
         [Fact]
         public void AgregarCliente()
-        {
+        {//
             List<Cliente> listcliente = Clientes.AgregarCliente(new Cliente("IBMA", new List<Direccion>() { new Direccion("Cerrito 4300", null, "1651", "CABA", "Buenos Aires", 2098) }, null));
 
             Assert.True(listcliente.Count()==1);
