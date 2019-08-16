@@ -11,7 +11,7 @@ namespace Test
         private Cliente Clientes = new Cliente();
         public TestCliente()
         {
-            Clientes = new Cliente("IBMA", new List<Direccion>() { new Direccion("Peron 4200", null, "1650", "CABA", "Buenos Aires", 2048) }, null);
+            Clientes = new Cliente("IBMA", new List<Direccion>() { new Direccion("Peron 4200", null, "1650", "CABA", "Buenos Aires", 2048) }, null);            
         }
 
         [Fact]
@@ -21,6 +21,16 @@ namespace Test
 
             Assert.True(listcliente.Count()==1);
             Assert.True(listcliente.Select(x => x.Entrega).ToList()[0] == null);
+        }
+
+        [Fact]
+        public void BuscarProximasEntregas()
+        {
+            var entrega = new List<Entrega>() { new Entrega() { Entregado = false, FechaEntrega = new System.DateTime(2018, 10, 10), Orden = new Orden() } };
+            Clientes.AgregarCliente(new Cliente("Cetil",new List<Direccion>() { new Direccion("Parana",2,"1650","CABA","Buenos Aires",2040)},entrega));
+
+            List<Entrega> lista=Clientes.OrdenesParaEntragar();
+            Assert.True(lista.Count() == 1);
         }
     }
 }
