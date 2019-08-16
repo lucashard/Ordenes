@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace Modelo
 {
@@ -12,7 +13,7 @@ namespace Modelo
         private List<Cliente> ListaClientes { get; set; } = new List<Cliente>();
 
 
-        public Cliente(string nombre, List<Direccion> direccion, List<Entrega> entrega = null)
+        public Cliente(string nombre, List<Direccion> direccion, List<Entrega> entrega)
         {
             Nombre = nombre;
             Direccion = direccion;
@@ -27,6 +28,16 @@ namespace Modelo
         {
             ListaClientes.Add(cliente);
             return ListaClientes;
+        }
+
+        public List<Entrega> OrdenesParaEntragar()
+        {
+            List<Entrega> entregas=new List<Entrega>();
+            foreach (Cliente item in ListaClientes)
+            {
+                entregas = item.Entrega.Where(x => x.Entregado == false).ToList();
+            }
+            return entregas;
         }
     }
 }
