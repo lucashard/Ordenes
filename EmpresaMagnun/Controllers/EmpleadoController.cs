@@ -20,6 +20,10 @@ namespace EmpresaMagnun.Controllers
         private EmpresaMagnun.Dominio dominio=new EmpresaMagnun.Dominio();
         private List<Empleado> list;
 
+        /// <summary>
+        /// Devuelve la lista de todos los empleados
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public List<Empleado> Get()
         {

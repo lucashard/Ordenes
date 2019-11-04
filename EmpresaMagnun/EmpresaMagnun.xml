@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EmpresaMagnun</name>
+    </assembly>
+    <members>
+        <member name="M:EmpresaMagnun.Controllers.EmpleadoController.Get">
+            <summary>
+            Devuelve la lista de todos los empleados
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
