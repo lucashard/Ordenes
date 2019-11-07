@@ -8,13 +8,7 @@ namespace EmpresaMagnun.Controllers
     [ApiController]
     public class EmpleadoController : ControllerBase
     {
-        public EmpleadoController() : this(new List<Empleado>()) { }
         
-        public EmpleadoController(List<Empleado> list)
-        {
-            dominio.empleados = list;
-       
-        }
 
         // GET api/values
         private EmpresaMagnun.Dominio dominio=new EmpresaMagnun.Dominio();
@@ -31,15 +25,25 @@ namespace EmpresaMagnun.Controllers
         }
 
         // GET api/values/5
+        /// <summary>
+        /// Trae los empleados
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// 1
+        /// </remarks>
         [HttpGet("{id}")]
         public Modelo.Empleado Get(int id)
         {
-            return dominio.empleados.Find(x => x.Id == id);
+            dominio.empleados = new List<Empleado>();
+            dominio.empleados.Add(new Empleado() { Dni = 32638916, Id = 1, Nombre = "Lucas" });
+            return dominio.empleados[0];
         }
 
         // POST api/values
         [HttpPost]
-        public void Post(Modelo.Empleado value)
+        public void Post([FromBody] Modelo.Empleado value)
         {
             dominio.empleados.Add(value);
         }

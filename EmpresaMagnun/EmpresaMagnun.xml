@@ -10,5 +10,15 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:EmpresaMagnun.Controllers.EmpleadoController.Get(System.Int32)">
+            <summary>
+            Trae los empleados
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <remarks>
+            1
+            </remarks>
+        </member>
     </members>
 </doc>
