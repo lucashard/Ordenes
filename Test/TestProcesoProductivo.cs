@@ -107,7 +107,9 @@ namespace Test
             DateTime duracion = orden.CalcularFechaProducto();
             Assert.False(DateTime.Now.Date > duracion);
         }
-
+        /// <summary>
+        /// Calcular el tiempo de duracion de asignacion de un empleado
+        /// </summary>
         [Fact]
         public void CalcularAsignacionDeOperarios()
         {

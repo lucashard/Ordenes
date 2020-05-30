@@ -6,6 +6,10 @@ namespace Modelo.Entidades
 {
     public class Reportes
     {
+        public Reportes()
+        {
+
+        }
 
     }
 }

@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2026
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmpresaMagnun", "EmpresaMagnun\EmpresaMagnun.csproj", "{44199A9F-8D3C-4BDA-BBDE-5D76C280E95C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmpresaMagnun", "EmpresaMagnun\EmpresaMagnun.csproj", "{44199A9F-8D3C-4BDA-BBDE-5D76C280E95C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modelo", "Modelo\Modelo.csproj", "{A8DFC475-9FA1-48BB-B353-8519B8894883}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modelo", "Modelo\Modelo.csproj", "{A8DFC475-9FA1-48BB-B353-8519B8894883}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{01AA8324-B3E7-4E5E-BB05-A7EC78694857}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{01AA8324-B3E7-4E5E-BB05-A7EC78694857}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
