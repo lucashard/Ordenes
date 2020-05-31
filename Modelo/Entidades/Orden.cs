@@ -45,7 +45,10 @@ namespace Modelo
         public List<Orden> ListOrdenes = new List<Orden>();
 
         
-        
+        /// <summary>
+        /// verifica si se puede agregar la ot
+        /// </summary>
+        /// <returns></returns>
         public bool SePuedeAgregarOrden()
         {
 
@@ -59,13 +62,22 @@ namespace Modelo
 
         }
 
+        /// <summary>
+        /// agrega una ot
+        /// </summary>
+        /// <param name="orden"></param>
+        /// <returns></returns>
+
         public List<Orden> AgregarOrden(Orden orden)
         {
             ListOrdenes.Add(orden);
 
             return ListOrdenes;
         }
-
+        /// <summary>
+        /// caluca duracion de las ot
+        /// </summary>
+        /// <returns></returns>
         public decimal CalcularDuracionProducto()
         {
             decimal duracion = 0;
@@ -78,7 +90,10 @@ namespace Modelo
             }
             return duracion;
         }
-
+        /// <summary>
+        /// calcula costo del producto
+        /// </summary>
+        /// <returns></returns>
         public decimal CalcularCostoProducto()
         {
             decimal costo = 0;
@@ -91,7 +106,10 @@ namespace Modelo
             }
             return costo;
         }
-
+        /// <summary>
+        /// calcula la fecha de terminacion de cada OT de la lista de OT
+        /// </summary>
+        /// <returns></returns>
         public DateTime CalcularFechaProducto()
         {
             DateTime fecha = new DateTime();
@@ -111,7 +129,11 @@ namespace Modelo
 
             return fecha;
         }
-
+        /// <summary>
+        /// calcula la asignacion por un puesto
+        /// </summary>
+        /// <param name="puesto"></param>
+        /// <returns></returns>
         public Dictionary<Empleado, List<Procesos>> CalcularAsignacionPorPuesto(string puesto)
         {
             var diccionario = new Dictionary<Empleado, List<Procesos>>();
@@ -150,7 +172,11 @@ namespace Modelo
             }
             return diccionario;
         }
-
+        /// <summary>
+        /// Da la lista de empleados y de procesos que intervienen en un ot
+        /// </summary>
+        /// <param name="nombreOt"></param>
+        /// <returns></returns>
         public Dictionary<List<Empleado>, List<Procesos>> CalcularEmpleadosPorOT(string nombreOt)
         {
             var dicconario = new Dictionary<List<Empleado>, List<Procesos>>();
@@ -174,7 +200,10 @@ namespace Modelo
             }
             return dicconario;
         }
-
+        /// <summary>
+        /// Te da el estado de la orden
+        /// </summary>
+        /// <returns></returns>
         public string GetEstadoOrden()
         {
             var fechaInicio = new DateTime();
@@ -206,14 +235,18 @@ namespace Modelo
                 return EstadoOrden.Terminada.ToString();
             }
         }
-
+        /// <summary>
+        /// calcula duracion con etapas en paralelo
+        /// nesesita una lista de ORDENES
+        /// </summary>
+        /// <returns></returns>
         public DateTime CalcularDuracionConEtapasEnParalelo()
         {
-            var fechaInicio = new DateTime();
             var fechaHasta = new DateTime();
             int cantDias = 0;
             foreach (var item in ListOrdenes)
             {
+                var fechaInicio = new DateTime();
                 fechaInicio = item.FechaInicio;
                 foreach (var etapas in item.EmpleadosEtapas)
                 {
@@ -232,7 +265,12 @@ namespace Modelo
             return fechaHasta;
             
         }
-
+        /// <summary>
+        /// Agrega dias laborables a partir de una de determinada fecha
+        /// </summary>
+        /// <param name="fecha"></param>
+        /// <param name="CantDias"></param>
+        /// <returns></returns>
         private DateTime AgregarDiasLaborales(DateTime fecha,int CantDias)
         {
             DateTime tmpDate = fecha;
