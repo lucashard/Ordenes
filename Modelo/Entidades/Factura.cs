@@ -6,6 +6,8 @@ namespace Modelo.Entidades
 {
     public class Factura
     {
+        public MateriasPrima materiasPrima { get; set; }
+
         public Factura(){
 
         }
