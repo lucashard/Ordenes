@@ -7,6 +7,7 @@ namespace Modelo.Entidades
     public class Factura
     {
 
+
         public Factura(){
 
         }
