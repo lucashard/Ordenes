@@ -60,6 +60,8 @@ namespace EmpresaMagnun
                 c.RoutePrefix = string.Empty;
             }) ;
             app.UseMvc();
+
+            //test
         }
     }
 }
