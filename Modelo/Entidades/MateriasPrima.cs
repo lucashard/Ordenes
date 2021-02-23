@@ -32,6 +32,19 @@ namespace Modelo
             return lista;
         }
 
+        public int CalcularStockByMateriaPrima(string v)
+        {
+            int cantidad = 0;
+            foreach (var item in lista)
+            {
+                if(item.Materias.Nombre.Equals(v))
+                {
+                    cantidad += item.Materias.Cantidad;
+                }
+            }
+            return cantidad;
+        }
+
         public int AgregarMateriaPrimaQueYaExiste(string materiasPrima, int cantidad)
         {
             int cant1 = lista.Find(x => x.Materias.Nombre == materiasPrima).Cantidad + cantidad;

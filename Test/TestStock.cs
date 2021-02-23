@@ -27,12 +27,12 @@ namespace Test
             Assert.True(materia == 40);
         }
 
-  
-
-
-
-
-            
+        [Fact]
+        public void CalcularStock()
+        {
+            int cantidad = materiaPrima.CalcularStockByMateriaPrima("Cerrucho");
+            Assert.True(cantidad ==20);
+        }
 
     }
 }
