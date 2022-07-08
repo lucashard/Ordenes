@@ -20,12 +20,12 @@ namespace Test
             Assert.True(lista.Count == 2);
         }
 
-        [Fact]
-        public void AgregarStockCantidadMateriaPrima()
-        {
-            int materia = materiaPrima.AgregarMateriaPrimaQueYaExiste("Cerrucho" ,10);
-            Assert.True(materia == 40);
-        }
+        //[Fact]
+        //public void AgregarStockCantidadMateriaPrima()
+        //{
+        //    int materia = materiaPrima.AgregarMateriaPrimaQueYaExiste("Cerrucho" ,10);
+        //    Assert.True(materia == 40);
+        //}
 
         [Fact]
         public void CalcularStock()
